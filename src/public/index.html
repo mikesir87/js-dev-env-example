@@ -1,4 +1,19 @@
 <!DOCTYPE html>
 <html>
   <h1>Hello world!</h1>
+
+  <div>
+    Your server-side message:
+    <span id="message"></span>
+  </div>
+
+  <script type="text/javascript">
+    (function() {
+      fetch("/message")
+        .then(r => r.json())
+        .then(({ message }) => {
+          document.getElementById("message").innerText = message
+        })
+    })();
+  </script>
 </html>
